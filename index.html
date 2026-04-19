@@ -15,7 +15,63 @@
     <script type="module" src="./src/index.ts"></script>
   </head>
   <body>
-    <header>header</header>
-    <main>main</main>
+    <header>
+      <img src="./assets/images/logo.svg" alt="logo" />
+    </header>
+
+    <main>
+      <form>
+        <fieldset>
+          <legend>Bill</legend>
+          <div>
+            <label for="bill">
+              <img src="./assets/images/icon-dollar.svg" alt="bill" />
+            </label>
+            <input
+              id="bill"
+              name="bill"
+              type="text"
+              inputmode="decimal"
+              pattern="\d+(\.\d{1,2})?$"
+            />
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Select Tip %</legend>
+          <label>5%<input type="radio" name="tip" value="5" /></label>
+          <label>10%<input type="radio" name="tip" value="10" /></label>
+          <label>15%<input type="radio" name="tip" value="15" /></label>
+          <label>25%<input type="radio" name="tip" value="25" /></label>
+          <label>50%<input type="radio" name="tip" value="50" /></label>
+          <label>
+            Custom
+            <input
+              type="text"
+              name="custom-tip"
+              inputmode="numeric"
+              pattern="\d+%?"
+              placeholder="Custom"
+            />
+          </label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Number of People</legend>
+          <div>
+            <label for="people-count">
+              <img src="./assets/images/icon-person.svg" alt="people count" />
+            </label>
+            <input
+              id="people-count"
+              name="people-count"
+              type="text"
+              inputmode="numeric"
+              pattern="\d+"
+            />
+          </div>
+        </fieldset>
+      </form>
+    </main>
   </body>
 </html>

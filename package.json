@@ -1,0 +1,20 @@
+{
+  "name": "tip-calculator-app",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "fmt": "eslint . && prettier . -w"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.2.1",
+    "prettier": "^3.8.3",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.58.2",
+    "vite": "^8.0.8"
+  },
+  "dependencies": {
+    "@preact/signals-core": "^1.14.1"
+  }
+}

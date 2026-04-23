@@ -20,6 +20,13 @@
     --line-height: 1.3;
     --font-family: "Space Mono", Arial, Helvetica, sans-serif;
 
+    --space-1: 0.25em;
+    --space-2: 0.5em;
+    --space-3: 1em;
+    --space-4: 1.5em;
+    --space-5: 2em;
+
+    --outline-grey: 0.125em solid var(--grey-200);
     --outline-green: 0.125em solid var(--green-400);
     --outline-red: 0.125em solid red;
   }
@@ -36,21 +43,21 @@
   }
 
   header {
-    margin-block: 2em;
+    margin-block: var(--space-5);
     text-align: center;
   }
 
   main {
     flex: 1;
-    padding: 1em 1.5em;
-    border-radius: 1em 1em 0 0;
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--space-3) var(--space-3) 0 0;
     background-color: var(--white);
   }
 
   input[type="text"] {
     outline: none;
     border: none;
-    border-radius: 0.25em;
+    border-radius: var(--space-1);
     font: inherit;
     width: 100%;
     height: 100%;
@@ -67,13 +74,14 @@
   }
 
   fieldset {
-    margin-block: 1em;
+    margin-block: var(--space-4);
+    padding-block-start: var(--space-2);
     border: none;
 
     &:has(input[name="tip"]) {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 0.5em;
+      gap: var(--space-3);
     }
   }
 
@@ -83,10 +91,10 @@
 
   label:has(input) {
     position: relative;
-    padding: 0.25em;
-    width: 100%;
-    border-radius: 0.25em;
+    padding: var(--space-2);
+    border-radius: var(--space-1);
     text-align: center;
+    font-size: 1.25em;
 
     &:hover {
       cursor: pointer;
@@ -95,6 +103,11 @@
     &:has(input[name="tip"]) {
       background-color: var(--green-900);
       color: var(--white);
+
+      &:hover {
+        background-color: var(--grey-200);
+        color: var(--green-900);
+      }
 
       input {
         position: absolute;
@@ -110,6 +123,7 @@
         position: absolute;
         left: 0;
         top: 0;
+        padding-inline: var(--space-3);
         text-align: center;
       }
     }
@@ -130,19 +144,19 @@
     label {
       position: absolute;
       top: 50%;
-      left: 0.5em;
+      left: var(--space-3);
       transform: translateY(-50%);
     }
 
     input {
-      padding: 0.25em 0.5em;
+      padding: var(--space-2) var(--space-3);
       text-align: end;
     }
   }
 
   section[aria-label="result"] {
-    padding: 1em;
-    border-radius: 1em;
+    padding: var(--space-3);
+    border-radius: var(--space-3);
     font-size: 0.875em;
     background-color: var(--green-900);
 
@@ -150,7 +164,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-block: 1em;
+      margin-block: var(--space-4);
       color: var(--white);
     }
 
@@ -164,15 +178,24 @@
     }
 
     button {
-      margin-block-start: 1em;
-      padding: 0.5em;
+      margin-block-start: var(--space-2);
+      padding: var(--space-2);
       width: 100%;
       border: none;
-      border-radius: 0.25em;
+      border-radius: var(--space-1);
       font: inherit;
       font-size: 1.25em;
       background-color: var(--green-400);
       color: var(--green-900);
+      cursor: pointer;
+
+      &:focus {
+        outline: var(--outline-grey);
+      }
+
+      &:hover {
+        background-color: var(--grey-200);
+      }
     }
   }
 }

@@ -13,7 +13,7 @@ function getElement<T extends typeof HTMLElement>(
 
 function percentage(value: unknown) {
   const text = String(value);
-  if (/%$/.test(text)) {
+  if (text.endsWith("%")) {
     return Number(text.slice(0, -1)) / 100;
   } else {
     return Number(text) / 100;
@@ -21,10 +21,12 @@ function percentage(value: unknown) {
 }
 
 const form = getElement("form", HTMLFormElement);
+const customTipInput = getElement(`input[name="custom-tip"]`, HTMLInputElement);
 const result = {
   tipAmount: getElement("#result-tip-amount"),
   total: getElement("#result-total"),
 };
+
 const state = {
   bill: signal(0),
   tip: signal(0),
@@ -54,4 +56,18 @@ form.addEventListener("reset", () => {
   state.bill.value = 0;
   state.tip.value = 0;
   state.count.value = 0;
+});
+
+customTipInput.addEventListener("blur", () => {
+  if ("" === customTipInput.value || !customTipInput.validity.valid) {
+    return;
+  }
+
+  if (!customTipInput.value.endsWith("%")) {
+    customTipInput.value += "%";
+  }
+
+  try {
+    getElement(`input[name="tip"]:checked`, HTMLInputElement).checked = false;
+  } catch {}
 });

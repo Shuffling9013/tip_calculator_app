@@ -138,6 +138,13 @@
     }
   }
 
+  fieldset:not(:has(input:checked)) {
+    input[name="custom-tip"]:valid:not(:placeholder-shown) {
+      background-color: var(--green-400);
+      color: var(--green-900);
+    }
+  }
+
   div:has(label + input) {
     position: relative;
 

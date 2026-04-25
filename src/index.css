@@ -106,7 +106,16 @@
   }
 
   legend {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
     color: var(--green-900);
+
+    [role="tooltip"] {
+      font-size: 0.875em;
+      color: red;
+    }
   }
 
   label:has(input) {

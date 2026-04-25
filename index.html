@@ -58,7 +58,9 @@
           </fieldset>
 
           <fieldset>
-            <legend>Number of People</legend>
+            <legend>
+              Number of People<span id="people-count-tooltip" role="tooltip" />
+            </legend>
             <div>
               <label for="people-count">
                 <img src="./assets/images/icon-person.svg" alt="people count" />
@@ -68,7 +70,7 @@
                 name="people-count"
                 type="text"
                 inputmode="numeric"
-                pattern="\d+"
+                pattern="(?!0+$)\d+"
               />
             </div>
           </fieldset>

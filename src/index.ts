@@ -21,7 +21,8 @@ function percentage(value: unknown) {
 }
 
 const form = getElement("form", HTMLFormElement);
-const customTipInput = getElement(`input[name="custom-tip"]`, HTMLInputElement);
+const customTipInput = getElement(`[name="custom-tip"]`, HTMLInputElement);
+const peopleCountInput = getElement(`[name="people-count"]`, HTMLInputElement);
 const result = {
   tipAmount: getElement("#result-tip-amount"),
   total: getElement("#result-total"),
@@ -69,5 +70,20 @@ customTipInput.addEventListener("blur", () => {
 
   try {
     getElement(`input[name="tip"]:checked`, HTMLInputElement).checked = false;
-  } catch {}
+  } catch {
+    // pass
+  }
+});
+
+peopleCountInput.addEventListener("input", () => {
+  const tooltip = getElement("#people-count-tooltip");
+  tooltip.textContent = "";
+
+  if (peopleCountInput.validity.valid) {
+    return;
+  }
+
+  if (0 === Number(peopleCountInput.value)) {
+    tooltip.textContent = "Can't be zero";
+  }
 });

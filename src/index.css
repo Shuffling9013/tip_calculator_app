@@ -104,7 +104,7 @@
       background-color: var(--green-900);
       color: var(--white);
 
-      &:hover {
+      &:hover:not(:has(input:checked)) {
         background-color: var(--grey-200);
         color: var(--green-900);
       }

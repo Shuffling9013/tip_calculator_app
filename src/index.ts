@@ -23,6 +23,7 @@ function percentage(value: unknown) {
 const form = getElement("form", HTMLFormElement);
 const customTipInput = getElement(`[name="custom-tip"]`, HTMLInputElement);
 const peopleCountInput = getElement(`[name="people-count"]`, HTMLInputElement);
+const peopleCountTooltip = getElement("#people-count-tooltip");
 const result = {
   tipAmount: getElement("#result-tip-amount"),
   total: getElement("#result-total"),
@@ -59,31 +60,36 @@ form.addEventListener("reset", () => {
   state.count.value = 0;
 });
 
+for (const e of document.querySelectorAll<HTMLInputElement>(`[name="tip"]`)) {
+  e.addEventListener("change", () => {
+    customTipInput.value = "";
+  });
+}
+
+customTipInput.addEventListener("input", () => {
+  if (customTipInput.validity.valid) {
+    try {
+      getElement(`[name="tip"]:checked`, HTMLInputElement).checked = false;
+    } catch {
+      // pass
+    }
+  }
+});
+
 customTipInput.addEventListener("blur", () => {
-  if ("" === customTipInput.value || !customTipInput.validity.valid) {
-    return;
-  }
-
-  if (!customTipInput.value.endsWith("%")) {
+  if (customTipInput.value && !customTipInput.value.endsWith("%")) {
     customTipInput.value += "%";
-  }
-
-  try {
-    getElement(`input[name="tip"]:checked`, HTMLInputElement).checked = false;
-  } catch {
-    // pass
   }
 });
 
 peopleCountInput.addEventListener("input", () => {
-  const tooltip = getElement("#people-count-tooltip");
-  tooltip.textContent = "";
+  peopleCountTooltip.textContent = "";
 
   if (peopleCountInput.validity.valid) {
     return;
   }
 
   if (0 === Number(peopleCountInput.value)) {
-    tooltip.textContent = "Can't be zero";
+    peopleCountTooltip.textContent = "Can't be zero";
   }
 });

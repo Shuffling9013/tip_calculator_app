@@ -175,7 +175,7 @@
   }
 
   fieldset:not(:has(input:checked)) {
-    input[name="custom-tip"]:valid:not(:placeholder-shown) {
+    input[name="custom-tip"]:valid:not(:placeholder-shown):not(:focus) {
       background-color: var(--green-400);
       color: var(--green-900);
     }

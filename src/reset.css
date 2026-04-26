@@ -15,4 +15,9 @@
   h6 {
     font: inherit;
   }
+
+  html,
+  body {
+    height: 100%;
+  }
 }

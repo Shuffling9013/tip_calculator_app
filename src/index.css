@@ -32,7 +32,9 @@
   }
 
   body {
-    height: 100dvh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
     font-weight: 700;
     font-size: var(--font-size);
     line-height: var(--line-height);
@@ -43,18 +45,23 @@
   header {
     margin-block: var(--space-5);
     text-align: center;
+
+    @media (width > 756px) {
+      margin-block-start: auto;
+    }
   }
 
   main {
-    margin: auto;
+    margin-block-end: auto;
+    flex-grow: 1;
     padding: var(--space-4);
-    height: 100%;
-    max-width: 48em;
+    width: 100%;
+    max-width: 54em;
     border-radius: var(--space-3) var(--space-3) 0 0;
     background-color: var(--white);
 
     @media (width > 756px) {
-      height: fit-content;
+      flex-grow: 0;
       border-radius: var(--space-3);
     }
   }
@@ -100,7 +107,7 @@
 
     &:has(input[name="tip"]) {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(auto-fill, minmax(7em, 1fr));
       gap: var(--space-3);
     }
   }
